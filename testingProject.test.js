@@ -1,4 +1,10 @@
-import { capitalize, reverseString, calculator, caesarCipher } from "./main.js";
+import {
+    capitalize,
+    reverseString,
+    calculator,
+    caesarCipher,
+    analyzeArray,
+} from "./main.js";
 
 // Test capitalize
 test("capitalize turns lowercase to uppercase", () => {
@@ -63,4 +69,15 @@ test("case preservation", () => {
 
 test("punctuation", () => {
     expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+});
+
+// Test analyze Array
+test("analyze array", () => {
+    const dummieObject = {
+        average: 4,
+        min: 1,
+        max: 8,
+        length: 6,
+    };
+    expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual(dummieObject);
 });

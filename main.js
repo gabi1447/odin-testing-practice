@@ -75,3 +75,42 @@ function rotateLower(charCode, key) {
         return String.fromCharCode(97 + diff - 1);
     }
 }
+
+export function analyzeArray(array) {
+    return {
+        average: average(array),
+        min: min(array),
+        max: max(array),
+        length: array.length,
+    };
+}
+
+function average(array) {
+    const total = array.reduce((accumulator, num) => {
+        return accumulator + num;
+    });
+
+    return total / array.length;
+}
+
+function min(array) {
+    let minNum = Infinity;
+    for (let num of array) {
+        if (num < minNum) {
+            minNum = num;
+        }
+    }
+
+    return minNum;
+}
+
+function max(array) {
+    let maxNum = -Infinity;
+    for (let num of array) {
+        if (num > maxNum) {
+            maxNum = num;
+        }
+    }
+
+    return maxNum;
+}
