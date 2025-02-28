@@ -34,3 +34,44 @@ export function calculator() {
         multiply,
     };
 }
+
+export function caesarCipher(str, key) {
+    let cipheredText = "";
+
+    for (let i = 0; i < str.length; i++) {
+        const asciiCode = str[i].charCodeAt();
+        if (asciiCode >= 65 && asciiCode <= 90) {
+            // rotate uppercase alpha char using key
+            cipheredText += rotateUpper(asciiCode, key);
+        } else if (asciiCode >= 97 && asciiCode <= 122) {
+            // rotate lowercase alpha char using key
+            cipheredText += rotateLower(asciiCode, key);
+        } else {
+            cipheredText += str[i];
+        }
+    }
+
+    return cipheredText;
+}
+
+function rotateUpper(charCode, key) {
+    const rotation = charCode + key;
+
+    if (rotation <= 90) {
+        return String.fromCharCode(rotation);
+    } else {
+        const diff = (rotation - 90) % 25;
+        return String.fromCharCode(65 + diff - 1);
+    }
+}
+
+function rotateLower(charCode, key) {
+    const rotation = charCode + key;
+
+    if (rotation <= 122) {
+        return String.fromCharCode(rotation);
+    } else {
+        const diff = (rotation - 122) % 25;
+        return String.fromCharCode(97 + diff - 1);
+    }
+}
